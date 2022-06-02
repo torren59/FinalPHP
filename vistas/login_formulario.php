@@ -1,9 +1,9 @@
 <?php
-include ("head.php");
+include ("headlogin.php");
 ?>
 
 <div class="cuadrologin">
-<form action="login.php" method="post">
+<form action="../protocolos/login.php" method="post">
     <label for="documento">
             Documento
         </label>

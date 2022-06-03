@@ -6,10 +6,8 @@ include ("../protocolos/validadorsesion.php");
 include ("head.php");
 ?>
 
-<?php
-$nombre=$_SESSION["usuario"]["nombre"];
-echo("Hola ".$nombre);
-?>
+
+
 
 <?php
 include("footer.php");

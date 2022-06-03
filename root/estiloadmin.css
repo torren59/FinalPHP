@@ -57,3 +57,25 @@ body{
     margin-bottom: 1%;
     margin-right: 5%;
 }
+
+.contenido-listado{
+    position:relative;
+    margin-top: 5%;
+    width: 100%;
+    
+}
+
+.listado-btn{
+    position: relative;
+    height: 38px;
+    background-color: black;
+    color:white;
+    border:none;
+}
+
+.listado-btn:hover{
+    background-color: #103900;
+    border:1px solid white;
+    color:white;
+}
+

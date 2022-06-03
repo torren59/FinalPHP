@@ -19,7 +19,7 @@ include ("headlogin.php");
             Contraseña
         </label>
         <br>
-        <input type="text" for="clave" name="clave" />
+        <input type="password" for="clave" name="clave" />
     </div>
         <br>
         <div class="btn-envio"><button type="submit" class="btn btn-dark" name="sender">Enviar</button></div>

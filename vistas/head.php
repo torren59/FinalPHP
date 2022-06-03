@@ -1,3 +1,7 @@
+<?php
+include("../protocolos/validadorsesion.php");
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,56 +20,20 @@
     <div class="admin-nav-main">
         <ul class="admin-nav-ul" >
 
-            <form action="">
+            <form action="../protocolos/opcionesadmin.php" method="post">
+
+        <div class="admin-nav-item admin-nav-message">
+            Bienvenido <?php echo($_SESSION["usuario"]["nombre"]); ?>
+        </div>
 
             <div class="admin-nav-item">
-                <li><button type="button" class="admin-nav-btn btn" id="admin-nav-btn1" onclick="navitemselect('admin-nav-btn1')" value="1">Gestión de eventos</button></li>
+                <li><button type="submit" class="admin-nav-btn btn" id="admin-nav-btn1" name="op" onclick="navitemselect('admin-nav-btn1')" value="1">Gestión de eventos</button></li>
             </div>
             <div class="admin-nav-item">
-                <li><button type="button" class="admin-nav-btn btn" id="admin-nav-btn2" onclick="navitemselect('admin-nav-btn2')" value="2" >Eventos publicados</button></li>
+                <li><button type="submit" class="admin-nav-btn btn" id="admin-nav-btn2" name="op" onclick="navitemselect('admin-nav-btn2')" value="2" >Eventos publicados</button></li>
             </div>
 
             </form>
-
-            <script>
-            $('#admin-nav-btn1').click(
-                function(){
-                    let op=document.getElementById('admin-nav-btn1').value;
-                    let ruta= "op="+op;
-
-                    $.ajax({
-                        url: 'http://localhost/FinalPHP/protocolos/opcionesadmin.php',
-                        type: 'POST',
-                        data: ruta,
-                    }).done(function(res){
-                        $('#answer').html(res)
-                    }).fail(function (){
-                        console.log("Error");
-                    }).always(function (){
-                        console.log("complete");
-                    });
-                }
-            );
-            $("#admin-nav-btn2").click(
-                function(){
-                    let op=document.getElementById('admin-nav-btn2').value;
-                    let ruta= "op="+op;
-
-                    $.ajax({
-                        url: 'http://localhost/FinalPHP/protocolos/opcionesadmin.php',
-                        type: 'POST',
-                        data: ruta,
-                    }).done(function(res){
-                        $('#answer').html(res)
-                    }).fail(function (){
-                        console.log("Error");
-                    }).always(function (){
-                        console.log("complete");
-                    });
-                }
-            );
-        </script>
-
 
             <div class="admin-nav-item-logout">
                 <li> <form action="../protocolos/logout.php" method="post"><button type="submit" name="logoutbtn" class="admin-nav-btn-logout btn btn-warning" >Cerrar sesión</button></form> </li>

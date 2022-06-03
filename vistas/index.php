@@ -1,5 +1,4 @@
 <?php
-require ("../protocolos/referencedate.php");
 include ("head.php");
 ?>
 
@@ -9,8 +8,6 @@ include ("head.php");
     <?php
     include("../protocolos/opcionesadmin.php");
     ?>
-
-    <div id="answer"></div>
 
 </div>
 

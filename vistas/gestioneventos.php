@@ -1,35 +1,18 @@
 <?php
-include ("../protocolos/validadorsesion.php");
+include ("head.php");
 ?>
 
-<div>
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td colspan="2">Larry the Bird</td>
-      <td>@twitter</td>
-    </tr>
-  </tbody>
-</table>
+<div class="contenido-listado">
+    <form action="../protocolos/opcionesadmin.php" method="post"><!--Form de botonera general-->
+    <div class="add-event-item" >
+        <button class="gest-event-btn btn" name="op" id="gest-event-btn-add" value="4" >Agregar nueva actividad</button>
+    </div>
+    <div class="add-event-item" >
+        <button class="gest-event-btn btn" name="op" id="gest-event-btn-add" value="3" >Agregar nuevo evento</button>
+    </div>
+ <br><br> 
+    <div class="add-event-content">
+        hola
+    </div>
+    </form>
 </div>

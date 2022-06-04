@@ -21,6 +21,7 @@ else{
 
         if($_SESSION["usuario"]["rolid"]==1){
             header('Location:http://localhost/FinalPHP/vistas/index.php');
+            include("../conexion/cerrar_conexion.php");
         }
         else if($_SESSION["usuario"]["rolid"]==2){
             header('Location:http://localhost/FinalPHP/vistas/indexuser.php');

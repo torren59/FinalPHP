@@ -10,11 +10,15 @@ if(isset($_POST["op"])){
             include("../vistas/gestioneventos.php");
         break;
         case 3:
+            include("../vistas/agregaractividad.php");
+        break;
+        case 4:
             include("../vistas/agregarevento.php");
         break;
+        
     }
 }
 else{
-    echo("post no recibido");
+    
 }
 ?>

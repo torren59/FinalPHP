@@ -109,9 +109,15 @@ body{
     position: relative;
     float: none;
     margin-left: 2%;
+    border: 2px solid red;
 }
 
-.add-event-content{
-    position: relative;
-    margin: 0px;
+.add-content-block{
+    float: left;
+    margin-left: 1%;
+    border: 2px solid green;
+}
+
+#descripcion{
+    height: 90px;
 }

@@ -1,24 +1,46 @@
 <?php
+session_start();
 if(isset($_POST["op"])){
-    $actividadid=123;
+    $activityid;
     $nombre=$_POST["nombre"];
     $descripcion=$_POST["descripcion"];
     if($nombre==null || $descripcion==null){
         header('Location:http://localhost/FinalPHP/vistas/agregaractividad.php');
-        session_start();
+        
         $_SESSION["ActivityState"]="Completa todos los campos para crear esta actividad";
+    }
+    else if(strlen($nombre)>15){
+        header('Location:http://localhost/FinalPHP/vistas/agregaractividad.php');
+        
+        $_SESSION["ActivityState"]="El nombre debe tener menos de 15 caracteres";
+    }
+    else if(strlen($descripcion)>100){
+        header('Location:http://localhost/FinalPHP/vistas/agregaractividad.php');
+        
+        $_SESSION["ActivityState"]="La descripción debe tener menos de 100 caracteres";
     }
     else{
         include("../conexion/abrir_conexion.php");
+        $VERIF_ACTIVIDADID=" SELECT actividadid from $actividad where actividadid = '$activityid' ";
+        $pase=0;
+        while($pase==0){
+            $activityid=rand(100,999);
+            $consulta=mysqli_query($conexion,$VERIF_ACTIVIDADID);
+            $resultado=mysqli_fetch_array($consulta);
+            if(isset($resultado["actividadid"])){
+                $dbreturned=$resultado["actividadid"];
+                if($dbreturned!=$activityid){$pase=1;}
+            }
+        }
 
     $CREATEACT="INSERT INTO $actividad 
     (actividadid,nombre,descripcion)
     values 
-    ('$actividadid','$nombre','$descripcion')";
+    ('$activityid','$nombre','$descripcion')";
 
     mysqli_query($conexion,$CREATEACT);
     header('Location:http://localhost/FinalPHP/vistas/agregaractividad.php');
-    session_start();
+    
     $_SESSION["ActivityState"]="Actividad guardada exitosamente";
         include("../conexion/cerrar_conexion.php");
     }

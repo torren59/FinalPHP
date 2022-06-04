@@ -21,16 +21,15 @@ if(isset($_POST["op"])){
     }
     else{
         include("../conexion/abrir_conexion.php");
-        $VERIF_ACTIVIDADID=" SELECT actividadid from $actividad where actividadid = '$activityid' ";
         $pase=0;
         while($pase==0){
             $activityid=rand(100,999);
+            $VERIF_ACTIVIDADID=" SELECT actividadid from $actividad where actividadid = '$activityid' ";
             $consulta=mysqli_query($conexion,$VERIF_ACTIVIDADID);
             $resultado=mysqli_fetch_array($consulta);
-            if(isset($resultado["actividadid"])){
-                $dbreturned=$resultado["actividadid"];
-                if($dbreturned!=$activityid){$pase=1;}
-            }
+            $dbreturned=$resultado["actividadid"];
+            if($dbreturned!=$activityid){$pase=1;}
+            
         }
 
     $CREATEACT="INSERT INTO $actividad 

@@ -30,7 +30,7 @@ include("../vistas/head.php");
         </div>
         <br>
         <div class="add-event-item">
-        <?php if(isset($_SESSION["ActivityState"])){ echo($_SESSION["ActivityState"]); } ?>
+        <?php if(isset($_SESSION["ActivityState"])){ echo($_SESSION["ActivityState"]);}?>
         </div>
     </div>
 
@@ -42,6 +42,8 @@ include("../vistas/head.php");
             y miércoles en diferentes horarios.
         </h6>
     </div>
+
+    
 
     </form>
 </div>

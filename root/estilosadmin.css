@@ -74,7 +74,7 @@ body{
     width: 100%;
     padding-top:10px;
     border:1px solid black;
-    overflow:auto;
+    overflow:hidden;
 }
 
 .listado-btn{
@@ -109,15 +109,18 @@ body{
     position: relative;
     float: none;
     margin-left: 2%;
-    border: 2px solid red;
+    border: 2px solid violet;
+    overflow: hidden;
 }
 
 .add-content-block{
     float: left;
     margin-left: 1%;
     border: 2px solid green;
+    overflow: hidden;
 }
 
 #descripcion{
     height: 90px;
 }
+

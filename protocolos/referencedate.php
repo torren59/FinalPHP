@@ -7,4 +7,83 @@ $referencedate=date('Y-m-d'); //Así lo devuelve date 2022-06-05
 
 //Solicitudes utiles sql
 //select date_format('2022-06-04','%Y-%m-%W') Pasa la fecha pero con el día con nombre
+
+//Convierte fechas recibidas en string a numeros enteros
+function fechaanumero($datetoint){
+
+    $infod1= substr($datetoint,0,4);
+    $infod2= substr($datetoint,5,2);
+    $infod3= substr($datetoint,8,2);
+
+    $infods1= strval($infod1);
+    $infods2= strval($infod2);
+    $infods3= strval($infod3);
+
+    $infodsdef=$infods1.$infods2.$infods3;
+    $infodsult= $infodsdef+0;
+
+    return $infodsult;
+}
+
+/*Con base en una fecha suministrada devueve el mes actual y todos los posteriores meses hasta diciembre, 
+si es diciembre sólo devolverá ese mes*/
+function imprimemes($date){
+
+    $retorno=array();
+    $mes= substr($date,5,2);
+
+    $enero=[1,'enero'];
+    $febrero=[2,'febrero'];
+    $marzo=[3,'marzo'];
+    $abril=[4,'abril'];
+    $mayo=[5,'mayo'];
+    $junio=[6,'junio'];
+    $julio=[7,'julio'];
+    $agosto=[8,'agosto'];
+    $septiembre=[9,'septiembre'];
+    $octubre=[10,'octubre'];
+    $noviembre=[11,'noviembre'];
+    $diciembre=[12,'diciembre'];
+
+    $meses=[$enero,$febrero,$marzo,$abril
+    ,$mayo,$junio,$julio,$agosto,$septiembre
+    ,$octubre,$noviembre,$diciembre];
+
+    for($i=11;$i>=$mes-1;$i--){
+        array_push($retorno,$meses[$i]);
+    }
+
+    return $retorno;
+
+}
+
+/*Ingresas una fecha y te retorna todas las fechas que correspondan con ese mismo dia (Lunes, Martes ETC)
+dentro del mes que se ingresó en la fecha inicial. El arreglo incluye la fecha ingresada*/
+function fechasaagendar($fechaevento){
+    include("../conexion/abrir_conexion.php");
+    $agendamientos = array();
+    $newfecha=$fechaevento;
+    $periodos=7;
+    $inicialmonth=substr($fechaevento,5,2);
+
+
+    while($newfecha!=null){
+        array_push($agendamientos,$newfecha);
+        $consulta=" SELECT DATE_ADD('$fechaevento', INTERVAL $periodos DAY) ";
+        $resultado = mysqli_query($conexion,$consulta);
+        $consultar=mysqli_fetch_array($resultado);
+        $newfecha=$consultar[0];
+        $finalmonth=substr($newfecha,5,2);
+        if($inicialmonth!=$finalmonth){$newfecha=null;}
+        $periodos+=7;
+    }
+
+    include("../conexion/cerrar_conexion.php");
+
+    return $agendamientos;
+}
+
+
+
+
 ?>

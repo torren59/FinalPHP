@@ -15,10 +15,15 @@ if(isset($_POST["op"])){
         case 4:
             include("../vistas/agregarevento.php");
         break;
+        case 7:
+            include("../vistas/agregareventosconjun.php");
+        break;
         
     }
 }
 else{
-    
+    if(!isset($_POST["op"])){
+        include("../vistas/gestioneventos.php");
+    }
 }
 ?>

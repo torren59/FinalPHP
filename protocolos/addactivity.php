@@ -1,6 +1,7 @@
 <?php
 session_start();
 if(isset($_POST["op"])){
+
     $activityid;
     $nombre=$_POST["nombre"];
     $descripcion=$_POST["descripcion"];
@@ -42,5 +43,6 @@ if(isset($_POST["op"])){
     $_SESSION["ActivityState"]="Actividad guardada exitosamente";
         include("../conexion/cerrar_conexion.php");
     }
+
 }
 ?>

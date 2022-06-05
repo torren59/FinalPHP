@@ -32,9 +32,7 @@ if(isset($_POST["op"])){
     }
 
     else{
-        if(!isset($_POST["estado"])){
-        
-        }
+       
         
         include("../conexion/abrir_conexion.php");
         $pase=0;

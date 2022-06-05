@@ -14,27 +14,30 @@ if(isset($_POST["op"])){
     $estado=$_POST["estado"];
 
     if($actividadid==null || $fecha_evento==null||$hora==null || $aforo==null){
-        header('Location:http://localhost/FinalPHP/vistas/agregarevento.php');
+        header('Location:http://localhost/FinalPHP/vistas/agregareventosconjun.php');
         
-        $_SESSION["EventState"]="Completa los campos de fecha del evento, hora y aforo para crear este evento";
+        $_SESSION["EventCState"]="Completa los campos de fecha del evento, hora y aforo para crear este evento";
     }
 
 
     else if(strlen($hora)>8){
-        header('Location:http://localhost/FinalPHP/vistas/agregarevento.php');
-        $_SESSION["EventState"]="La hora debe tener menos de 8 caracteres";
+        header('Location:http://localhost/FinalPHP/vistas/agregareventosconjun.php');
+        $_SESSION["EventCState"]="La hora debe tener menos de 8 caracteres";
     }
     
     else if($referencedateint>$fecha_eventoint){
-        header('Location:http://localhost/FinalPHP/vistas/agregarevento.php');
+        header('Location:http://localhost/FinalPHP/vistas/agregareventosconjun.php');
         
-        $_SESSION["EventState"]="La fecha debe ser mayor a la fecha actual";
+        $_SESSION["EventCState"]="La fecha debe ser mayor a la fecha actual";
     }
 
     else{
-        if(!isset($_POST["estado"])){
-        
-        }
+
+        $colaagregacion=fechasaagendar($fecha_evento);
+    
+        for($i=0; $i<count($colaagregacion);$i++){
+
+            $fecha_evento=$colaagregacion[$i];
         
         include("../conexion/abrir_conexion.php");
         $pase=0;
@@ -47,6 +50,7 @@ if(isset($_POST["op"])){
             if($dbreturned!=$eventid){$pase=1;}
         }
 
+       
         
     $CREATEEVT="INSERT INTO $evento 
     (eventoid,actividadid,fecha_evento,hora,aforo,estado)
@@ -54,11 +58,15 @@ if(isset($_POST["op"])){
     ('$eventid','$actividadid','$fecha_evento','$hora','$aforo','$estado')";
     mysqli_query($conexion,$CREATEEVT);
 
-    header('Location:http://localhost/FinalPHP/vistas/agregarevento.php');
+    include("../conexion/cerrar_conexion.php");
     
-    $_SESSION["EventState"]="Evento guardado exitosamente";
-        include("../conexion/cerrar_conexion.php");
     }
+
+    header('Location:http://localhost/FinalPHP/vistas/agregareventosconjun.php');
     
-}
+    $_SESSION["EventCState"]="Eventos guardados exitosamente";
+    
+}  
+}    
+
 ?>

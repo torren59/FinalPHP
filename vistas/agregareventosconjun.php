@@ -24,7 +24,7 @@ include("../protocolos/referencedate.php")
         </h6>
     </div>
 
-    <form action="../protocolos/addevent.php" method="POST">
+    <form action="../protocolos/addeventconjun.php" method="POST">
     <div class="add-content-block col-12">  
     <div class="add-content-block col-6">
     <div class="add-event-item">
@@ -44,21 +44,14 @@ include("../protocolos/referencedate.php")
         <br>
         <div class="add-event-item">
         <div class="event-item">
-        <label class="form-label">Repetir durante todo el mes de</label>
-        <select class="form-select" aria-label="Default select example" name="periodicidad">
-            <?php
-            $posibledates=imprimemes($referencedate);
-            foreach($posibledates as $posidates){
-                echo('<option name="periodicidad" value="'.$posidates[0].'">'.$posidates[1].'</option>');
-            }
-        ?>
-        </select> 
+            Recuerda que este evento se repetirá durante durante todo el mes iniciando el día seleccionado y 
+            repitiéndose cada semana al llegar el día correspondiente (Lunes, Martes ETC) hasta que haya finalizado el mes.
         </div>
         </div>
 
         <br>
         <div class="add-event-item">
-        <button type="submit" class="admin-nav-btn btn" name="op"  value="6">Crear evento</button>
+        <button type="submit" class="admin-nav-btn btn" name="op"  value="7">Crear evento</button>
         </div>
         <br>
         <div class="add-event-item">

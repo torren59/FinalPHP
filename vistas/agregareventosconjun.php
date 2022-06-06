@@ -55,7 +55,7 @@ include("../protocolos/referencedate.php")
         </div>
         <br>
         <div class="add-event-item">
-        <?php if(isset($_SESSION["EventState"])){ echo($_SESSION["EventState"]);}?>
+        <?php if(isset($_SESSION["EventState"])){ echo($_SESSION["EventState"]); $_SESSION["EventState"]="";}?>
         </div>
     </div>
 

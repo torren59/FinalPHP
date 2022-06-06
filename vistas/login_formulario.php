@@ -21,7 +21,8 @@ include ("headlogin.php");
         <br>
         <input type="password" for="clave" name="clave" />
     </div>
-        <br>
+        <sub>¿Aún no tienes una cuenta? <a href="http://localhost/FinalPHP/vistas/agregarusuario.php">Regístrate</a> </sub>
+        <br><br>
         <div class="btn-envio"><button type="submit" class="btn btn-dark" name="sender">Enviar</button></div>
 </form>
     </div>

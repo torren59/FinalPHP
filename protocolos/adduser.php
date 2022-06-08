@@ -57,8 +57,7 @@ if(isset($_POST["op"])){
     
     header('Location:http://localhost/FinalPHP/vistas/agregarusuario.php');
     
-    $_SESSION["UserState"]='Tu usuario ya ha sido creado, dirígete a la ventana de ingreso y accede con el
-    documento y clave que has registrado <br> <button class="btn btn-success sm-btn"><a href="http://localhost/FinalPHP/vistas/login_formulario.php"></a>Ir a ingreso</button>';
+    $_SESSION["UserState"]='Tu usuario ya ha sido creado, dirígete al login y accede con el documento y clave que has registrado';
 
     }
 

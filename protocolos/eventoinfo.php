@@ -1,5 +1,5 @@
 <?php
-include("../conexion/abrir_conexion.php");
+/*
 
 //Inserta un nuevo evento con todos sus datos correspondientes
 $sqlevento1= "INSERT INTO $evento 
@@ -9,5 +9,6 @@ values
 
 $sqlevento1c= mysqli_query($conexion,$sqlevento1);
 
-include("../conexion/cerrar_conexion.php");
+*/
+
 ?>

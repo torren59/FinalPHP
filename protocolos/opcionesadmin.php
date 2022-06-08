@@ -18,6 +18,11 @@ if(isset($_POST["op"])){
         case 7:
             include("../vistas/agregareventosconjun.php");
         break;
+        /*
+        default:
+        include("../vistas/gestioneventos.php");
+        break;
+        */
         
     }
 }

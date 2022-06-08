@@ -57,6 +57,32 @@ function imprimemes($date){
 
 }
 
+/*Con base en una fecha suministrada devuelve la fecha correspondiente al día lunes más cercano, si es lunes
+devuelve el lunes próximo
+*/
+function retornalunes($date){
+    $retorno='';
+    $adicion=['Monday'=>7,'Tuesday'=>6,'Wednesday'=>5,'Thursday'=>4,'Friday'=>3,'Saturday'=>2,'Sunday'=>1];
+
+    include("../conexion/abrir_conexion.php");
+    
+    $sqlRetornalunes=" SELECT DATE_FORMAT('$date','%W') ";
+    $sqlRetornalunesc=mysqli_query($conexion,$sqlRetornalunes);
+    $sqlRetornalunesr=mysqli_fetch_array($sqlRetornalunesc);
+    $intervalue=$adicion[$sqlRetornalunesr[0]];
+
+    $sqlRetornalunes=" SELECT DATE_ADD('$date',INTERVAL $intervalue DAY) ";
+    $sqlRetornalunesc=mysqli_query($conexion,$sqlRetornalunes);
+    $sqlRetornalunesr=mysqli_fetch_array($sqlRetornalunesc);
+    $retorno=$sqlRetornalunesr[0];
+ 
+    include("../conexion/cerrar_conexion.php");
+
+    return $retorno;
+
+}
+
+
 /*Ingresas una fecha y te retorna todas las fechas que correspondan con ese mismo dia (Lunes, Martes ETC)
 dentro del mes que se ingresó en la fecha inicial. El arreglo incluye la fecha ingresada*/
 function fechasaagendar($fechaevento){
@@ -83,7 +109,37 @@ function fechasaagendar($fechaevento){
     return $agendamientos;
 }
 
+//Devuelve el último día del mes en curso ingresado en $date
+function finmesactual($date){
+    include("../conexion/abrir_conexion.php");
+    $fechaexistente=array();
+    $actualday=substr($date,8,2);
 
+    do{
+        $actualday=28-$actualday;
+        if($actualday>0){
+            $fechaexistentec=" SELECT DATE_ADD('$date', INTERVAL $actualday DAY) ";
+            $fechaexistenter=mysqli_query($conexion, $fechaexistentec);
+            $fechaexistente=mysqli_fetch_array($fechaexistenter);
+            $actualday=substr($fechaexistente[0],8,2);
+        }
+        else{
+            $fechaexistentec=" SELECT DATE_ADD('$fechaexistente[0]', INTERVAL 1 DAY) ";
+            $fechaexistenter=mysqli_query($conexion, $fechaexistentec);
+            $fechaexistente=mysqli_fetch_array($fechaexistenter);
+            $actualday=substr($fechaexistente[0],8,2);
+        }
+    }while(substr($fechaexistente[0],5,2)==substr($date,5,2));
+    
+    $fechaexistentec=" SELECT DATE_ADD('$fechaexistente[0]', INTERVAL -1 DAY) ";
+    $fechaexistenter=mysqli_query($conexion, $fechaexistentec);
+    $fechaexistente=mysqli_fetch_array($fechaexistenter);
+    $lmd=$fechaexistente[0];
+    return $lmd;
 
+    include("../conexion/cerrar_conexion.php");
+
+    
+}
 
 ?>

@@ -10,7 +10,7 @@ if(isset($_POST["op"])){
         
         $_SESSION["ActivityState"]="Completa todos los campos para crear esta actividad";
     }
-    else if(strlen($nombre)>15){
+    else if(strlen($nombre)>30){
         header('Location:http://localhost/FinalPHP/vistas/agregaractividad.php');
         
         $_SESSION["ActivityState"]="El nombre debe tener menos de 15 caracteres";

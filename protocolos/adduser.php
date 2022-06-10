@@ -38,7 +38,7 @@ if(isset($_POST["op"])){
         $_SESSION["UserState"]="Llena todos los campos";
     }
 
-    else if(strlen($nombre)>15||strlen($apellido)>15||strlen($clave)>10){
+    else if(strlen($nombre)>15||strlen($apellido)>15||strlen($clave)>30){
         
         header('Location:http://localhost/FinalPHP/vistas/agregarusuario.php');
         $_SESSION["UserState"]="El nombre no debe tener más de 15 caracteres <br>El apellido no debe tener más de 15 caracteres

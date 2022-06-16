@@ -1,11 +1,11 @@
 <?php
-include("../vistas/head.php");
+include("../protocolos/validadorsesion.php");
 ?>
 
 <div class="contenido-listado">
 
 
-    <form action="../protocolos/opcionesadmin.php" method="post" >
+    <form action="../vistas/index.php" method="post" >
 
     <div class="add-event-item">
         <button type="submit" class="admin-nav-btn btn" name="op"  value="1"><-Atrás</button>

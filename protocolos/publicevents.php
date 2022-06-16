@@ -3,8 +3,6 @@ include("./referencedate.php");
 session_start();
 $_SESSION["PublicarState"]="";
 
-echo("Llega por lo menos");
-
 if(isset($_POST["op"])){
     $publicacion=$_POST["publicacion"];
     $limitdate=retornalunes($referencedate);
@@ -18,7 +16,8 @@ if(isset($_POST["op"])){
 
         include("../conexion/cerrar_conexion.php");
 
-        header('Location:http://localhost/FinalPHP/vistas/gestioneventos.php');
+        header('Location:http://localhost/FinalPHP/vistas/index.php');
+        $_SESSION["route"]="./gestioneventos.php";
         $_SESSION["PublicarState"]="Eventos publicados exitosamente";
         
         
@@ -37,9 +36,20 @@ if(isset($_POST["op"])){
         $sqlpublicarr=mysqli_query($conexion,$sqlpublicarc);
         include("../conexion/cerrar_conexion.php");
 
-        header('Location:http://localhost/FinalPHP/vistas/gestioneventos.php');
+        header('Location:http://localhost/FinalPHP/vistas/index.php');
         $_SESSION["PublicarState"]="Eventos publicados exitosamente";
     }
     
+}
+else if(isset($_POST["ops"])){
+    $idtopublic=$_POST["ops"];
+    include("../conexion/abrir_conexion.php");
+    $sqlpublicarsing="UPDATE $evento SET estado=1 WHERE eventoid='$idtopublic' ";
+    $sqlpublicarsingexe=mysqli_query($conexion,$sqlpublicarsing);
+    include("../conexion/cerrar_conexion.php");
+    session_start();
+    header('Location:http://localhost/FinalPHP/vistas/index.php');
+    $_SESSION["route"]="./gestioneventos.php";
+    $_SESSION["PublicarState"]="Evento publicado exitosamente";
 }
 ?>

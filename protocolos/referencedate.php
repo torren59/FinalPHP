@@ -9,15 +9,16 @@ $referencedate=date('Y-m-d'); //Así lo devuelve date 2022-06-05
 //select date_format('2022-06-04','%Y-%m-%W') Pasa la fecha pero con el día con nombre
 
 //Convierte fechas recibidas en string a numeros enteros
+
 function fechaanumero($datetoint){
 
     $infod1= substr($datetoint,0,4);
     $infod2= substr($datetoint,5,2);
     $infod3= substr($datetoint,8,2);
 
-    $infods1= strval($infod1);
-    $infods2= strval($infod2);
-    $infods3= strval($infod3);
+    $infods1= doubleval($infod1);
+    $infods2= doubleval($infod2);
+    $infods3= doubleval($infod3);
 
     $infodsdef=$infods1.$infods2.$infods3;
     $infodsult= $infodsdef+0;
@@ -63,6 +64,28 @@ devuelve el lunes próximo
 function retornalunes($date){
     $retorno='';
     $adicion=['Monday'=>7,'Tuesday'=>6,'Wednesday'=>5,'Thursday'=>4,'Friday'=>3,'Saturday'=>2,'Sunday'=>1];
+
+    include("../conexion/abrir_conexion.php");
+    
+    $sqlRetornalunes=" SELECT DATE_FORMAT('$date','%W') ";
+    $sqlRetornalunesc=mysqli_query($conexion,$sqlRetornalunes);
+    $sqlRetornalunesr=mysqli_fetch_array($sqlRetornalunesc);
+    $intervalue=$adicion[$sqlRetornalunesr[0]];
+
+    $sqlRetornalunes=" SELECT DATE_ADD('$date',INTERVAL $intervalue DAY) ";
+    $sqlRetornalunesc=mysqli_query($conexion,$sqlRetornalunes);
+    $sqlRetornalunesr=mysqli_fetch_array($sqlRetornalunesc);
+    $retorno=$sqlRetornalunesr[0];
+ 
+    include("../conexion/cerrar_conexion.php");
+
+    return $retorno;
+
+}
+
+function retornadomingo($date){
+    $retorno='';
+    $adicion=['Sunday'=>7,'Monday'=>6,'Tuesday'=>5,'Wednesday'=>4,'Thursday'=>3,'Friday'=>2,'Saturday'=>1];
 
     include("../conexion/abrir_conexion.php");
     

@@ -14,20 +14,21 @@ if(isset($_POST["op"])){
     $estado=$_POST["estado"];
 
     if($actividadid==null || $fecha_evento==null||$hora==null || $aforo==null){
-        header('Location:http://localhost/FinalPHP/vistas/agregareventosconjun.php');
-        
+        header('Location:http://localhost/FinalPHP/vistas/index.php');
+        $_SESSION["route"]="./agregareventosconjun.php";
         $_SESSION["EventCState"]="Completa los campos de fecha del evento, hora y aforo para crear este evento";
     }
 
 
     else if(strlen($hora)>8){
-        header('Location:http://localhost/FinalPHP/vistas/agregareventosconjun.php');
+        header('Location:http://localhost/FinalPHP/vistas/index.php');
+        $_SESSION["route"]="./agregareventosconjun.php";
         $_SESSION["EventCState"]="La hora debe tener menos de 8 caracteres";
     }
     
     else if($referencedateint>$fecha_eventoint){
-        header('Location:http://localhost/FinalPHP/vistas/agregareventosconjun.php');
-        
+        header('Location:http://localhost/FinalPHP/vistas/index.php');
+        $_SESSION["route"]="./agregareventosconjun.php";
         $_SESSION["EventCState"]="La fecha debe ser mayor a la fecha actual";
     }
 
@@ -62,8 +63,8 @@ if(isset($_POST["op"])){
     
     }
 
-    header('Location:http://localhost/FinalPHP/vistas/agregareventosconjun.php');
-    
+    header('Location:http://localhost/FinalPHP/vistas/index.php');
+    $_SESSION["route"]="./agregareventosconjun.php";
     $_SESSION["EventCState"]="Eventos guardados exitosamente";
     
 }  

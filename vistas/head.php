@@ -11,6 +11,7 @@ include("../protocolos/validadorsesion.php");
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <link rel="stylesheet" href="../root/estilosadmin.css" <?=date('Y-m-d H:i:s')?> > 
+    <link rel="stylesheet" href="../root/estilouserindex.css">
     <title>Admin</title>
 </head>
 <body>

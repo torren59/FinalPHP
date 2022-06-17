@@ -26,8 +26,9 @@ include("../protocolos/referencedate.php");
 
         <br><hr>
 
-        <form action="../protocolos/publicevents.php" method="POST">  
+     
         <div class="add-content-block col-11">
+        <form action="../protocolos/publicevents.php" method="POST">  
             <div class="add-content-block col-3">
             <label class="form-label">Publicar todos los eventos de:</label>
             </div>
@@ -45,9 +46,7 @@ include("../protocolos/referencedate.php");
                 <?php if(isset($_SESSION["PublicarState"])){ echo($_SESSION["PublicarState"]); $_SESSION["PublicarState"]=""; } ?>
             </div>
 
-            <div class="add-content-block col-5">
-                <button type="submit" class="btn-success btn" name="xls">Descargar histórico de eventos</button>
-                </div>
+
         </div>
         <br><br>
         <div class="add-content-block col-11">

@@ -26,9 +26,6 @@
             <div class="admin-nav-item">
                 <li><button type="submit" class="admin-nav-btn btn" id="admin-nav-btn1" name="op" onclick="navitemselect('admin-nav-btn1')" value="1">Gestión de eventos</button></li>
             </div>
-            <div class="admin-nav-item">
-                <li><button type="submit" class="admin-nav-btn btn" id="admin-nav-btn2" name="op" onclick="navitemselect('admin-nav-btn2')" value="2" >Eventos publicados</button></li>
-            </div>
 
             </form>
 

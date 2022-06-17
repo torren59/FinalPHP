@@ -52,4 +52,16 @@ else if(isset($_POST["ops"])){
     $_SESSION["route"]="./gestioneventos.php";
     $_SESSION["PublicarState"]="Evento publicado exitosamente";
 }
-?>
+else if(isset($_POST["xls"])){
+    include("../conexion/abrir_conexion.php");
+    header('content-type:application/xls');
+    header('content-Disposition: attachment; filename=usersList.xls');
+}
+    ?>
+    <table>
+        <thead>
+            <th>Hola</th>
+            <th>Adiós</th>
+        </thead>
+    </table>
+

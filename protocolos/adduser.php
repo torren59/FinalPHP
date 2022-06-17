@@ -47,11 +47,28 @@ if(isset($_POST["op"])){
 
     else{ 
 
+        //Generando PK para fecha_habilitada
+        $fch_habid;
+        $pase=2;
+        while($pase>1){
+            $fch_habid=rand(1000,9999);
+            $VERIF_HABID=" SELECT *from $fecha_habilitada where fecha_habilitadaid = '$fch_habid' ";
+            $consulta=mysqli_query($conexion,$VERIF_HABID);
+            $resultado=mysqli_fetch_row($consulta);
+            $pase=$resultado;
+        }
+        
+
     $CREATEUSR="INSERT INTO $usuario 
     (documento,rolid,nombre,apellido,clave)
     values 
     ('$documento','2','$nombre','$apellido','$contrasena')";
     mysqli_query($conexion,$CREATEUSR);
+
+    
+
+    $CREATEHABIL_DATE=" INSERT INTO $fecha_habilitada (fecha_habilitadaid,documento,fecha_habilitada) VALUES ('$fch_habid','$documento','$referencedate') ";
+    $EXECUTEHABIL_DATE=mysqli_query($conexion,$CREATEHABIL_DATE);
 
     include("../conexion/cerrar_conexion.php");
     

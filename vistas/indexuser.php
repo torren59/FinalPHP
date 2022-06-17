@@ -8,7 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <link rel="stylesheet" href="../root/estilosadmin.css" <?=date('Y-m-d H:i:s')?> > 
     <link rel="stylesheet" href="../root/estilouserindex.css">
-    <title>Admin</title>
+    <title>Eventomania</title>
 </head>
 <body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
@@ -24,10 +24,10 @@
         </div>
 
             <div class="admin-nav-item">
-                <li><button type="submit" class="admin-nav-btn btn" id="admin-nav-btn1" name="ip" onclick="navitemselect('admin-nav-btn1')" value="1">Mis Eventos</button></li>
+                <li><button type="submit" class="admin-nav-btn btn" id="admin-nav-btn1" name="ip" value="1">Mis Eventos</button></li>
             </div>
             <div class="admin-nav-item">
-                <li><button type="submit" class="admin-nav-btn btn" id="admin-nav-btn2" name="ip" onclick="navitemselect('admin-nav-btn2')" value="2" >Eventos publicados</button></li>
+                <li><button type="submit" class="admin-nav-btn btn" id="admin-nav-btn2" name="ip"  value="2" >Eventos publicados</button></li>
             </div>
 
             </form>
@@ -40,9 +40,38 @@
 </nav>
 
 <div class="megacontainer">
-    <?php
-    include("./eventosuser.php");
-    ?>
+<?php
+
+
+if(isset($_POST["ip"])){
+    $vistaparcial=$_POST["ip"];
+
+    switch($vistaparcial){
+        case 2:
+            include("./eventosuser.php");
+        break;
+        case 1:
+            include("./miseventos.php");
+        break;
+        
+        default:
+        include("./gestioneventos.php");
+        break;
+        
+        
+    }
+}
+else{
+
+    if(isset($_SESSION["route"])){
+        include($_SESSION["route"]);
+    }
+    else{
+        include("./eventosuser.php");
+    }
+}
+
+?>
 </div>
 
 <?php

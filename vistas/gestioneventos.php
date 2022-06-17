@@ -44,6 +44,10 @@ include("../protocolos/referencedate.php");
             <div class="add-content-block col-3">
                 <?php if(isset($_SESSION["PublicarState"])){ echo($_SESSION["PublicarState"]); $_SESSION["PublicarState"]=""; } ?>
             </div>
+
+            <div class="add-content-block col-5">
+                <button type="submit" class="btn-success btn" name="xls">Descargar histórico de eventos</button>
+                </div>
         </div>
         <br><br>
         <div class="add-content-block col-11">
@@ -109,10 +113,6 @@ include("../protocolos/referencedate.php");
                 <br>
                 <div class="add-content-block col-5">
                 <button type="submit" class="admin-pub-btn btn" name="ops"  value="'.$sqleventcardr["eventoid"].'">Publicar</button>
-                </div>
-
-                <div class="add-content-block col-5">
-                <button type="submit" class="btn-success btn" name="op"  value="11">Info</button>
                 </div>
 
             </div>

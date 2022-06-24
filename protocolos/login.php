@@ -8,9 +8,7 @@ else{
     $consulta=mysqli_query($conexion,"SELECT *FROM $usuario where Documento = $DocEnviado");
     $resultado=mysqli_fetch_array($consulta);
     if($resultado==null){
-        ?>
-        <p name="Error">Está vacío</p>
-        <?php       
+            header('Location:http://localhost/FinalPHP/vistas/login_formulario.php');
     }
     else{
 
